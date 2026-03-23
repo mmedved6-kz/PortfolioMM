@@ -5,9 +5,11 @@
   --accent-warm: #C08552;
   --accent-medium: #8C5A3C;
   --text-dark: #4B2E2B;
+  --surface: #FFFCF8;
 }
 
 * {
+  box-sizing: border-box;
   color-scheme: light;
 }
 
@@ -16,18 +18,64 @@ html {
 }
 
 body {
+  margin: 0;
   background-color: var(--bg-light);
   color: var(--text-dark);
 }
 
 a {
-  color: var(--accent-warm);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  color: inherit;
 }
 
-a:hover {
+.surface {
+  background-color: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--accent-medium), white 62%);
+}
+
+.text-theme {
+  color: var(--text-dark);
+}
+
+.text-muted {
+  color: color-mix(in oklab, var(--text-dark), white 36%);
+}
+
+.link-theme {
   color: var(--accent-medium);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.link-theme:hover {
+  color: var(--accent-warm);
+}
+
+.nav-shell {
+  background: color-mix(in oklab, var(--surface), white 35%);
+  border-bottom: 1px solid color-mix(in oklab, var(--accent-medium), white 58%);
+}
+
+.nav-brand {
+  color: var(--text-dark);
+}
+
+.button-primary {
+  background-color: var(--accent-warm);
+  color: #FFF8F0;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.18s ease;
+}
+
+.button-primary:hover {
+  background-color: var(--accent-medium);
+}
+
+.footer-shell {
+  background: color-mix(in oklab, var(--surface), white 28%);
+  border-top: 1px solid color-mix(in oklab, var(--accent-medium), white 58%);
 }
 
 h1, h2, h3, h4, h5, h6 {

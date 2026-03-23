@@ -28,20 +28,20 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <header className="sticky top-0 bg-white shadow">
+      <body className="min-h-full flex flex-col text-theme">
+        <header className="sticky top-0 nav-shell backdrop-blur-sm z-20">
           <nav className="max-w-6xl mx-auto px-4 py-4 flex gap-6 items-center">
-            <h1 className="font-bold text-lg flex-1">Portfolio</h1>
-            <Link href="/home" className="hover:underline">
+            <h1 className="font-bold text-lg flex-1 nav-brand">Portfolio</h1>
+            <Link href="/" className="link-theme hover:underline">
               Home
             </Link>
-            <Link href="/about" className="hover:underline">
+            <Link href="/about" className="link-theme hover:underline">
               About
             </Link>
-            <Link href="/projects" className="hover:underline">
+            <Link href="/projects" className="link-theme hover:underline">
               Projects
             </Link>
-            <Link href="/blog" className="hover:underline">
+            <Link href="/blog" className="link-theme hover:underline">
               Blog
             </Link>
           </nav>
@@ -51,7 +51,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="bg-gray-100 mt-12 py-6 text-center text-gray-600">
+        <footer className="bg-gray-100 mt-12 py-6 text-center text-muted">
           <p>&copy; {new Date().getFullYear()} Medet Murzakhanov. All rights reserved.</p>
         </footer>
       </body>
