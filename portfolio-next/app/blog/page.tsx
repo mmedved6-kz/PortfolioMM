@@ -1,3 +1,8 @@
-export default function Blog() {
-    return <main><h1>Blog</h1><p>Coming Soon.</p></main>
+export default function BlogPage() {
+  return (
+    <main>
+      <h1>Blog</h1>
+      <p>Blog posts will appear here once MDX is wired.</p>
+    </main>
+  );
 }

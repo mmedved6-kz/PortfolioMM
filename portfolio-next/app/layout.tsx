@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,33 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header className="sticky top-0 bg-white shadow">
+          <nav className="max-w-6xl mx-auto px-4 py-4 flex gap-6 items-center">
+            <h1 className="font-bold text-lg flex-1">Portfolio</h1>
+            <Link href="/home" className="hover:underline">
+              Home
+            </Link>
+            <Link href="/about" className="hover:underline">
+              About
+            </Link>
+            <Link href="/projects" className="hover:underline">
+              Projects
+            </Link>
+            <Link href="/blog" className="hover:underline">
+              Blog
+            </Link>
+          </nav>
+        </header>
+
+        <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+          {children}
+        </main>
+
+        <footer className="bg-gray-100 mt-12 py-6 text-center text-gray-600">
+          <p>&copy; {new Date().getFullYear()} Medet Murzakhanov. All rights reserved.</p>
+        </footer>
+      </body>
     </html>
   );
 }
