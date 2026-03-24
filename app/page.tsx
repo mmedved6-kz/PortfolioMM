@@ -48,37 +48,41 @@ const latestPost = [
 export default function Page() {
   return (
     <main className="space-y-6">
-      <section className="surface p-6 md:p-10">
-        <p className="text-xs md:text-sm uppercase tracking-[0.18em] text-muted">
-          Medet Murzakhanov - Software Engineer
-        </p>
+      <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-[var(--surface)] to-[rgba(29,78,216,0.08)]">        
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-[var(--accent)] opacity-5 blur-3xl" />
+        <div className="relative z-10">
+          <p className="text-xs md:text-sm uppercase tracking-[0.18em] text-muted">
+            Medet Murzakhanov - Software Engineer
+          </p>
 
-        <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
-          I build reliable full-stack products with strong architecture and measurable outcomes.
-        </h1>
+          <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
+            I build reliable full-stack products with strong architecture and measurable outcomes.
+          </h1>
 
-        <p className="mt-4 text-base md:text-lg text-muted max-w-2xl">
-          I care about clean UX, practical engineering trade-offs and shipping work that lasts.
-        </p>
+          <p className="mt-4 text-base md:text-lg text-muted max-w-2xl">
+            I care about clean UX, practical engineering trade-offs and shipping work that lasts.
+          </p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/projects" className="button-primary inline-block">
-            View Projects
-          </Link>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/projects" className="button-primary inline-block">
+              View Projects
+            </Link>
 
-          <Link
-            href="/about"
-            className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
-          >
-            About Me
-          </Link>
+            <Link
+              href="/about"
+              className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
+            >
+              About Me
+            </Link>
 
-          <Link
-            href="/blog"
-            className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
-          >
-            Read Blog
-          </Link>
+            <Link
+              href="/blog"
+              className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
+            >
+              Read Blog
+            </Link>
+        
+          </div>
         </div>
       </section>
 

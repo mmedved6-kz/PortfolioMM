@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import {Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import ThemeToggle from "@/components/theme-toggle";
+import NavBar from "@/components/nav-bar";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -32,21 +31,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col text-theme">
         <header className="floating-nav-wrap z-20">
-            <nav className="floating-nav px-4 py-3 flex gap-5 items-center">
-              <Link href="/" className="link-theme hover:underline">
-                Home
-              </Link>
-              <Link href="/about" className="link-theme hover:underline">
-                About
-              </Link>
-              <Link href="/projects" className="link-theme hover:underline">
-                Projects
-              </Link>
-              <Link href="/blog" className="link-theme hover:underline">
-                Blog
-              </Link>
-              <ThemeToggle />
-            </nav>
+            <NavBar />
         </header>
 
         <div className="nav-spacer" aria-hidden="true" />
