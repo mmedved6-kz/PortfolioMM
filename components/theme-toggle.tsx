@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 
 type Theme = "light" | "dark";
@@ -27,9 +28,23 @@ export default function ThemeToggle() {
 
   return (
     <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label="Toggle theme">
-      <img src="/light_mode.svg" alt="" aria-hidden="true" width="20" height="20" className="theme-toggle-icon theme-toggle-icon-light" />
-      <img src="/dark_mode.svg" alt="" aria-hidden="true" width="20" height="20" className="theme-toggle-icon theme-toggle-icon-dark" />
-      <span className="sr-only">Toggle theme</span>  
+      <Image
+        src="/light_mode.svg"
+        alt="Light mode"
+        aria-hidden="true"
+        width={24}
+        height={24}
+        className="theme-toggle-icon theme-toggle-icon-light"
+      />
+      <Image
+        src="/dark_mode.svg"
+        alt="Dark mode"
+        aria-hidden="true"
+        width={24}
+        height={24}
+        className="theme-toggle-icon theme-toggle-icon-dark"
+      />
+      <span className="sr-only">Toggle theme</span>
     </button>
   );
 }
