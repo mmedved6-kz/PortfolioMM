@@ -4,7 +4,7 @@ export default function About() {
             <aside className="w-48">
                 <h3 className="font-bold mb-4">Sections</h3>
                 <nav className="space-y-2">
-                    <a href="#introduction" className="block hover:undeline">
+                    <a href="#introduction" className="block hover:underline">
                         Introduction
                     </a>
                     <a href="#work-experience" className="block hover:underline">

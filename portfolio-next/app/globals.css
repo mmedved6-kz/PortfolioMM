@@ -1,83 +1,135 @@
 @import "tailwindcss";
 
 :root {
-  --bg-light: #FFF8F0;
-  --accent-warm: #C08552;
-  --accent-medium: #8C5A3C;
-  --text-dark: #4B2E2B;
+  --bg: #F8FAFC;
   --surface: #FFFCF8;
+  --text: #0F172A;
+  --muted: #475569;
+  --border: #CBD5E1;
+  --accent: #1D4ED8;
+  --accent-hover: #1E40AF;
+  --floating-nav-offset: 1rem;
+  --floating-nav-height: 3.25rem;
 }
 
 * {
   box-sizing: border-box;
-  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0B1220;
+  --surface: #111827;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --border: #334155;
+  --accent: #60A5FA;
+  --accent-hover: #93C5FD;
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 .surface {
   background-color: var(--surface);
-  border: 1px solid color-mix(in oklab, var(--accent-medium), white 62%);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
 }
 
 .text-theme {
-  color: var(--text-dark);
+  color: var(--text);
 }
 
 .text-muted {
-  color: color-mix(in oklab, var(--text-dark), white 36%);
+  color: var(--muted);
 }
 
 .link-theme {
-  color: var(--accent-medium);
-  text-decoration: none;
+  color: var(--accent);
   transition: color 0.18s ease;
 }
 
 .link-theme:hover {
-  color: var(--accent-warm);
+  color: var(--accent-hover);
 }
 
-.nav-shell {
-  background: color-mix(in oklab, var(--surface), white 35%);
-  border-bottom: 1px solid color-mix(in oklab, var(--accent-medium), white 58%);
+.floating-nav-wrap {
+  position: fixed;
+  top: var(--floating-nav-offset);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
 
-.nav-brand {
-  color: var(--text-dark);
+.floating-nav {
+  pointer-events: auto;
+  background: color-mix(in oklab, var(--surface), transparent 12%);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .button-primary {
-  background-color: var(--accent-warm);
-  color: #FFF8F0;
+  background-color: var(--accent);
+  color: #F8FAFC;
   border-radius: 0.6rem;
   padding: 0.7rem 1rem;
   font-weight: 600;
-  text-decoration: none;
+  border: 1px solid transparent;
   transition: background-color 0.18s ease;
 }
 
 .button-primary:hover {
-  background-color: var(--accent-medium);
+  background-color: var(--accent-hover);
 }
 
 .footer-shell {
-  background: color-mix(in oklab, var(--surface), white 28%);
-  border-top: 1px solid color-mix(in oklab, var(--accent-medium), white 58%);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-spacer {
+  height: calc(var(--floating-nav-offset) + var(--floating-nav-height) + 1rem);
+}
+
+main section[id] {
+  scroll-margin-top: calc(var(--floating-nav-offset) + var(--floating-nav-height) + 0.75rem);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-dark);
+  color: var(--text);
 }
