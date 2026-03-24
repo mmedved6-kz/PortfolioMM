@@ -130,6 +130,33 @@ main section[id] {
   scroll-margin-top: calc(var(--floating-nav-offset) + var(--floating-nav-height) + 0.75rem);
 }
 
+.project-rail {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.project-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: project-marquee 28s linear infinite;
+}
+
+.project-rail:hover .project-track {
+  animation-play-state: paused;
+}
+
+@keyframes project-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-35%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-track {
+    animation: none;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
 }

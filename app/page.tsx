@@ -1,4 +1,7 @@
+import { PROJECTS } from "@/lib/projects";
 import Link from "next/link";
+
+const featuredProjects = PROJECTS.filter((p) => p.featured);
 
 const proofCards = [
   {
@@ -21,6 +24,24 @@ const proofCards = [
     value: "100+",
     note: "Consumed while debugging \"impossible\" bugs",
     emphasis: false,
+  }
+]
+
+const latestPost = [
+  {
+    title: "Why I choce MDX for portfolio blogging",
+    meta: "Engineering - 6 min read",
+    href: "/blog",
+  },
+  {
+    title: "Desigining a calm light/dark theme system",
+    meta: "Frontend - 4 min read",
+    href: "/blog",
+  },
+  {
+    title: "From static site to App Router",
+    meta: "Architecture - 5 min read",
+    href: "/blog",
   }
 ]
 
@@ -77,6 +98,42 @@ export default function Page() {
             <p className="mt-2 text-sm text-muted">{card.note}</p>
           </article>
         ))}
+      </section>
+
+      <section className="surface p-6 md:p-8">
+        <div className="flex items-end justify-between gap-4 flex-wrap">
+          <h2 className="text-2xl font-semibold">Featured Projects</h2>
+          <Link href="/projects" className="link-theme text-sm font-medium">
+            View All Projects
+          </Link>
+        </div>
+
+        <div className="project-rail mt-5">
+            <div className="project-track">
+              {[...featuredProjects, ...featuredProjects].map((project, idx) => (
+                <article 
+                  key={`${project.slug}-${idx}`}
+                  className="rounded-xl border border-[var(--border)] p-4 min-w-[280px] max-w-[320px] bg-[var(--surface)]"
+                >
+                  <h3 className="text-lg font-semibold">{project.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{project.summary}</p>
+                  <p className="mt-2 text-sm">
+                    <span className="font-medium">Outcome:</span> {project.outcome}
+                  </p>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <li key={item} className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-muted">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/projects" className="mt-4 inline-block link-theme text-sm font-medium">
+                    View Project
+                  </Link>
+                </article>
+              ))}
+            </div>
+        </div>
       </section>
     </main>
   );
