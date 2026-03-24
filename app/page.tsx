@@ -135,6 +135,49 @@ export default function Page() {
             </div>
         </div>
       </section>
+
+      <section className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <article className="surface p-6 md:p-8 lg:col-span-3">
+          <h2 className="text-2xl font-semibold">How I think</h2>
+          <p className="mt-3 text-muted leading-7">
+              I like building systems where UX clarity, maintainable architecture, and delivery speed
+              stay in balance. I care about practical trade-offs, not overengineering.
+          </p>
+
+          <h3 className="mt-6 text-lg font-semibold">About Me</h3>
+          <p className="mt-2 text-muted leading-7">
+            I’m a full-stack engineer focused on shipping useful products. I enjoy turning ambiguous
+            ideas into production-ready experiences with strong technical foundations.
+          </p>
+
+          <Link href="/about" className="mt-5 inline-block link-theme text-sm font-medium">
+            Read full profile
+          </Link>
+        </article>
+
+        <article className="surface p-6 md:p-8 lg:col-span-2">
+          <h2 className="text-2xl font-semibold">Latest Writing</h2>
+          <ul className="mt-4 space-y-3">
+            {latestPost.map((post) => (
+              <li key={post.title} className="rounded-xl border border-[var(--border)] p-3">
+                <Link href={post.href} className="font-medium link-theme">
+                  {post.title}
+                </Link>
+                <p className="text-xs text-muted mt-1">{post.meta}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      <section className="surface p-6 md:p-8 text-center">
+        <h2 className="text-2xl font-semibold">Open to collaborations</h2>
+        <p className="mt-3 text-muted">If you have a role, product idea or challenge, let&apos;s talk</p>
+        <div className="mt-6 flex justify-center gap-3 flex-wrap">
+          <Link href="/contact" className="button-primary inline-block">Contact Me</Link>
+          <Link href="/blog" className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme">Explore Blog</Link>
+        </div>
+      </section>
     </main>
   );
 }
