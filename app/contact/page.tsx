@@ -21,7 +21,7 @@ export default function ContactPage() {
                     <h2 className="text-xl font-semibold">Best way to reach me</h2>
                     <a href={mailtoLink} className="button-primary inline-block mt-4">
                         <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon contact-link-icon-inverted" />
-                        {/*<span>Email Me</span> */}
+                        <span className="sr-only">Email Me</span>
                     </a>
                     <p className="mt-3 text-sm text-muted break-all">{contact.email}</p>
                 </article>
@@ -36,7 +36,7 @@ export default function ContactPage() {
                             className="inline-block rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium link-theme"
                         >
                             <Image src="/github-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
-                            {/*<span>GitHub</span> */}
+                            <span className="sr-only">GitHub</span>
                         </a>
                         <a 
                             href={contact.linkedin}
@@ -45,7 +45,7 @@ export default function ContactPage() {
                             className="inline-block rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium link-theme"
                         >
                             <Image src="/linkedin-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
-                            {/*<span>LinkedIn</span> */}
+                            <span className="sr-only">LinkedIn</span>
                         </a>
                     </div>
                     <p className="mt-3 text-sm text-muted">I typically respond within 24-48 hours.</p>

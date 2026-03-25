@@ -1,3 +1,4 @@
+import ProjectRail from "@/components/project-rail";
 import { PROJECTS } from "@/lib/projects";
 import Link from "next/link";
 
@@ -8,33 +9,33 @@ const proofCards = [
     id: "experience",
     title: "Years of Experience",
     value: "1+",
-    note: "Production team collaboration and delivery",
+    note: "Production team collaboration and delivery.",
     emphasis: false,
   },
   {
     id: "projects",
     title: "Projects Deployed",
     value: "3",
-    note: "Full-stack projects with measurable outcomes",
+    note: "Full-stack projects with measurable outcomes.",
     emphasis: true,
   },
   {
     id: "fun",
     title: "Cups of Coffee",
     value: "100+",
-    note: "Consumed while debugging \"impossible\" bugs",
+    note: "Consumed while debugging \"impossible\" bugs.",
     emphasis: false,
   }
 ]
 
 const latestPost = [
   {
-    title: "Why I choce MDX for portfolio blogging",
+    title: "Why I chose MDX for portfolio blogging",
     meta: "Engineering - 6 min read",
     href: "/blog",
   },
   {
-    title: "Desigining a calm light/dark theme system",
+    title: "Designing a calm light/dark theme system",
     meta: "Frontend - 4 min read",
     href: "/blog",
   },
@@ -112,37 +113,12 @@ export default function Page() {
           </Link>
         </div>
 
-        <div className="project-rail mt-5">
-            <div className="project-track">
-              {[...featuredProjects, ...featuredProjects].map((project, idx) => (
-                <article 
-                  key={`${project.slug}-${idx}`}
-                  className="rounded-xl border border-[var(--border)] p-4 min-w-[280px] max-w-[320px] bg-[var(--surface)]"
-                >
-                  <h3 className="text-lg font-semibold">{project.title}</h3>
-                  <p className="mt-2 text-sm text-muted">{project.summary}</p>
-                  <p className="mt-2 text-sm">
-                    <span className="font-medium">Outcome:</span> {project.outcome}
-                  </p>
-                  <ul className="mt-3 flex flex-wrap gap-2">
-                    {project.stack.map((item) => (
-                      <li key={item} className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-muted">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/projects" className="mt-4 inline-block link-theme text-sm font-medium">
-                    View Project
-                  </Link>
-                </article>
-              ))}
-            </div>
-        </div>
+        <ProjectRail projects={featuredProjects} />
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         <article className="surface p-6 md:p-8 lg:col-span-3">
-          <h2 className="text-2xl font-semibold">How I think</h2>
+          <h2 className="text-2xl font-semibold">How I Think</h2>
           <p className="mt-3 text-muted leading-7">
               I like building systems where UX clarity, maintainable architecture, and delivery speed
               stay in balance. I care about practical trade-offs, not overengineering.
@@ -175,8 +151,8 @@ export default function Page() {
       </section>
 
       <section className="surface p-6 md:p-8 text-center">
-        <h2 className="text-2xl font-semibold">Open to collaborations</h2>
-        <p className="mt-3 text-muted">If you have a role, product idea or challenge, let&apos;s talk</p>
+        <h2 className="text-2xl font-semibold">Open to Collaborations</h2>
+        <p className="mt-3 text-muted">If you have a role, product idea, or challenge, let&apos;s talk</p>
         <div className="mt-6 flex justify-center gap-3 flex-wrap">
           <Link href="/contact" className="button-primary inline-block">Contact Me</Link>
           <Link href="/blog" className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme">Explore Blog</Link>

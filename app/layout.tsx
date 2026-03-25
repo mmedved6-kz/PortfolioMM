@@ -48,15 +48,15 @@ export default function RootLayout({
           <div className="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm">
             <a href={`mailto:${contact.email}`} className="contact-link" aria-label="Email">
               <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
-              {/*<span>Email</span> */}
+              <span className="sr-only">Email</span>
             </a>
             <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link" aria-label="GitHub">
               <Image src="/github-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
-              {/*<span>GitHub</span> */}
+              <span className="sr-only">GitHub</span>
             </a>
             <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link" aria-label="LinkedIn">
               <Image src="/linkedin-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
-              {/*<span>LinkedIn</span> */}
+              <span className="sr-only">LinkedIn</span>
             </a>
           </div>
         </footer>
