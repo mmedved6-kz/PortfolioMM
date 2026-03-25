@@ -19,13 +19,13 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="floating-nav px-4 py-3 flex gap-5 items-center">
+        <nav className="floating-nav flex items-center gap-3 px-3 py-2 md:gap-5 md:px-4 md:py-3 max-w-full overflow-x-auto whitespace-nowrap">
             {links.map((link) => (
                 <Link
                     key={link.href}
                     href={link.href}
                     className={[
-                        "text-sm font-medium transition-colors duration-200",
+                        "text-xs sm:text-sm font-medium transition-colors duration-200",
                         isActive(link.href)
                             ? "text-[var(--accent)] font-semibold"
                             : "link-theme hover:underline",

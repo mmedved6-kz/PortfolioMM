@@ -85,6 +85,26 @@ a {
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
   backdrop-filter: blur(10px);
+  scrollbar-width: none;
+}
+
+.floating-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --floating-nav-height: 2.9rem;
+  }
+
+  .project-rail {
+    mask-image: none;
+  }
+
+  .embla__slide {
+    flex: 0 0 84vw;
+    min-width: 0;
+  }
 }
 
 .button-primary {
