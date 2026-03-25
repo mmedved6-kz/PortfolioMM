@@ -15,34 +15,16 @@ const proofCards = [
   {
     id: "projects",
     title: "Projects Deployed",
-    value: "3",
+    value: "1",
     note: "Full-stack projects with measurable outcomes.",
     emphasis: true,
   },
   {
     id: "fun",
     title: "Cups of Coffee",
-    value: "100+",
+    value: "58",
     note: "Consumed while debugging \"impossible\" bugs.",
     emphasis: false,
-  }
-]
-
-const latestPost = [
-  {
-    title: "Why I chose MDX for portfolio blogging",
-    meta: "Engineering - 6 min read",
-    href: "/blog",
-  },
-  {
-    title: "Designing a calm light/dark theme system",
-    meta: "Frontend - 4 min read",
-    href: "/blog",
-  },
-  {
-    title: "From static site to App Router",
-    meta: "Architecture - 5 min read",
-    href: "/blog",
   }
 ]
 
@@ -57,11 +39,11 @@ export default function Page() {
           </p>
 
           <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
-            I build reliable full-stack products with strong architecture and measurable outcomes.
+            I build practical full-stack products while growing as a software engineer.
           </h1>
 
           <p className="mt-4 text-base md:text-lg text-muted max-w-2xl">
-            I care about clean UX, practical engineering trade-offs and shipping work that lasts.
+            I care about clean UX, clean code and steady progress from idea to deployment.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -120,14 +102,14 @@ export default function Page() {
         <article className="surface p-6 md:p-8 lg:col-span-3">
           <h2 className="text-2xl font-semibold">How I Think</h2>
           <p className="mt-3 text-muted leading-7">
-              I like building systems where UX clarity, maintainable architecture, and delivery speed
-              stay in balance. I care about practical trade-offs, not overengineering.
+              I focus on fundamentals: understand the problem, build a simple solution first,
+              and then improve it with feedback. I prefer practical decisions over overengineering.
           </p>
 
           <h3 className="mt-6 text-lg font-semibold">About Me</h3>
           <p className="mt-2 text-muted leading-7">
-            I’m a full-stack engineer focused on shipping useful products. I enjoy turning ambiguous
-            ideas into production-ready experiences with strong technical foundations.
+            I&apos;m currently a Master&apos;s degree student in Software Engineering with 1+ years of experience. I enjoy 
+            building web applications, learning new tools and turning ideas into working products.
           </p>
 
           <Link href="/about" className="mt-5 inline-block link-theme text-sm font-medium">
@@ -137,16 +119,12 @@ export default function Page() {
 
         <article className="surface p-6 md:p-8 lg:col-span-2">
           <h2 className="text-2xl font-semibold">Latest Writing</h2>
-          <ul className="mt-4 space-y-3">
-            {latestPost.map((post) => (
-              <li key={post.title} className="rounded-xl border border-[var(--border)] p-3">
-                <Link href={post.href} className="font-medium link-theme">
-                  {post.title}
-                </Link>
-                <p className="text-xs text-muted mt-1">{post.meta}</p>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-4 text-sm text-muted leading-6">
+            This section is being prepared for upcoming blog posts. New writing will appear here soon.
+          </p>
+          <Link href="/blog" className="mt-4 inline-block link-theme text-sm font-medium">
+            Visit Blog
+          </Link>
         </article>
       </section>
 
