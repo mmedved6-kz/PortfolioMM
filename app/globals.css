@@ -250,6 +250,62 @@ main section[id] {
   filter: brightness(0) invert(1);
 }
 
+.contact-input-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 80%);
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-status-success {
+  color: #15893d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.contact-status-error {
+  color: #B91C1C;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.contact-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-detail-label {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
 }
