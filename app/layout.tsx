@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import {Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
+import { contact } from "@/lib/contact";
+import Image from "next/image";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -42,6 +44,21 @@ export default function RootLayout({
 
         <footer className="footer-shell bg-gray-100 mt-12 py-6 text-center text-muted">
           <p>&copy; {new Date().getFullYear()} Medet Murzakhanov. All rights reserved.</p>
+
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm">
+            <a href={`mailto:${contact.email}`} className="contact-link" aria-label="Email">
+              <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
+              {/*<span>Email</span> */}
+            </a>
+            <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link" aria-label="GitHub">
+              <Image src="/github-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
+              {/*<span>GitHub</span> */}
+            </a>
+            <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link" aria-label="LinkedIn">
+              <Image src="/linkedin-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
+              {/*<span>LinkedIn</span> */}
+            </a>
+          </div>
         </footer>
       </body>
     </html>

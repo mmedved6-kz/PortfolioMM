@@ -195,6 +195,42 @@ main section[id] {
   display: block;
 }
 
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--accent);
+  transition: color 0.18s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent-hover);
+}
+
+.contact-link-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.contact-link-card:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent);
+}
+
+.contact-link-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
 }
