@@ -19,7 +19,10 @@ export default function ContactPage() {
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <article className="surface p-6 md:p-8">
                     <h2 className="text-xl font-semibold">Best way to reach me</h2>
-                    <a href={mailtoLink} className="button-primary inline-block mt-4">Email Me</a>
+                    <a href={mailtoLink} className="button-primary inline-block mt-4">
+                        <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon contact-link-icon-inverted" />
+                        {/*<span>Email Me</span> */}
+                    </a>
                     <p className="mt-3 text-sm text-muted break-all">{contact.email}</p>
                 </article>
 
