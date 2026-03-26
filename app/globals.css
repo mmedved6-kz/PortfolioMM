@@ -306,6 +306,12 @@ main section[id] {
   color: var(--muted);
 }
 
+.contact-status-sending {
+  color: #A16207;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
 }

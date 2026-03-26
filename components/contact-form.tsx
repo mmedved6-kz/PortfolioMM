@@ -70,7 +70,7 @@ export function ContactForm() {
             </button>
 
             {state.status !== "idle" ? (
-                <p className={state.status === "success" ? "contact-status-success" : "contact-status-error"}>
+                <p className={state.status === "success" ? "contact-status-success" : state.status === "sending" ? "contact-status-sending" : "contact-status-error"}>
                     {state.errorMessage}
                 </p>
             ) : null}

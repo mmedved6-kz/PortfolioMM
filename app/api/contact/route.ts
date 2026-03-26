@@ -46,7 +46,7 @@ export async function POST(request: Request) {
             );
         }
 
-        const host = process.env.CONTACT_FORM_HOST;
+        const host = process.env.SMTP_HOST ?? process.env.CONTACT_FORM_HOST;
         const port = Number(process.env.SMTP_PORT ?? "587");
         const secure = String(process.env.SMTP_SECURE ?? "false").toLowerCase() === "true";
         const user = process.env.SMTP_USER;

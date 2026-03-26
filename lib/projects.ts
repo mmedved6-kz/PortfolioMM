@@ -5,6 +5,7 @@ export type ProjectItem = {
     outcome: string;
     stack: string[];
     featured?: boolean;
+    repoUrl?: string;
 };
 
 export const PROJECTS: ProjectItem[] = [
@@ -15,5 +16,6 @@ export const PROJECTS: ProjectItem[] = [
     outcome: "First production deployment showcasing my work and growth as an engineer.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     featured: true,
+    repoUrl: "https://github.com/mmedved6-kz/PortfolioMM",
   },
 ]
