@@ -9,7 +9,7 @@ const proofCards = [
     id: "experience",
     title: "Years of Experience",
     value: "1+",
-    note: "Production team collaboration and delivery.",
+    note: "Internship and hands-on team collaboration in real product workflows.",
     emphasis: false,
   },
   {
@@ -23,7 +23,7 @@ const proofCards = [
     id: "fun",
     title: "Cups of Coffee",
     value: "58",
-    note: "Consumed while debugging \"impossible\" bugs.",
+    note: "Regular companion for debugging, learning and building.",
     emphasis: false,
   }
 ]
@@ -108,8 +108,8 @@ export default function Page() {
 
           <h3 className="mt-6 text-lg font-semibold">About Me</h3>
           <p className="mt-2 text-muted leading-7">
-            I&apos;m currently a Master&apos;s degree student in Software Engineering with 1+ years of experience. I enjoy 
-            building web applications, learning new tools and turning ideas into working products.
+            I&apos;m currently studying Software Engineering at Heriot-Watt University, Dubai, and growing through
+            practical full-stack work, continuous learning and iterative product building.
           </p>
 
           <Link href="/about" className="mt-5 inline-block link-theme text-sm font-medium">

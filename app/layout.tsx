@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/nav-bar";
 import { contact } from "@/lib/contact";
 import Image from "next/image";
+import { Analytics } from "@vercel/analytics/next";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -19,6 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Portfolio - Medet Murzakhanov",
   description: "A personal portfolio website showcasing the projects, experience, and skills of Medet Murzakhanov.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -60,6 +64,8 @@ export default function RootLayout({
             </a>
           </div>
         </footer>
+
+        <Analytics />
       </body>
     </html>
   );
