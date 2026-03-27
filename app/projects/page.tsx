@@ -26,8 +26,8 @@ export default function ProjectsPage() {
                   </a>
               )}
             </div>
-            <p className="text-muted mt-2">{project.summary}</p>
-            <p className="mt-2 text-sm">
+            <p className="mt-2">{project.summary}</p>
+            <p className="mt-2 text-sm text-muted">
               <span className="font-medium">Outcome:</span> {project.outcome}
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">

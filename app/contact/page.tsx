@@ -29,7 +29,8 @@ export default function ContactPage() {
 
                     <ul className="mt-6 space-y-4">
                         <li className="contact-detail-row">
-                            <Image src="/mailto.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0" />
+                            <Image src="/mailto.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0 theme-icon-light" />
+                            <Image src="/mailto-white.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0 theme-icon-dark" />
                             <div className="flex-grow">
                                 <p className="contact-detail-label">Email</p>
                                 <a href={`mailto:${contact.email}`} className="link-theme break-all text-sm">
@@ -39,7 +40,8 @@ export default function ContactPage() {
                         </li>
 
                         <li className="contact-detail-row">
-                            <Image src="/github-svg.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0" />
+                            <Image src="/github-svg.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0 theme-icon-light" />
+                            <Image src="/github-svg-white.svg" alt="" aria-hidden="true" width={30} height={30} className="contact-link-icon flex-shrink-0 theme-icon-dark" />
                             <div className="flex-grow">
                                 <p className="contact-detail-label">GitHub</p>
                                 <a href={contact.github} target="_blank" rel="noreferrer" className="link-theme text-sm">

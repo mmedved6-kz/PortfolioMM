@@ -97,7 +97,7 @@ a {
     --floating-nav-height: 2.9rem;
   }
 
-  .project-rail {
+  .project-rail--faded {
     mask-image: none;
   }
 
@@ -156,6 +156,9 @@ main section[id] {
 .project-rail {
   --project-slide-gap: 1rem;
   overflow: hidden;
+}
+
+.project-rail--faded {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
@@ -208,6 +211,22 @@ main section[id] {
 }
 [data-theme="dark"] .theme-toggle-icon-light {
   display: block;
+}
+
+[data-theme="light"] .theme-icon-light {
+  display: inline-block;
+}
+
+[data-theme="light"] .theme-icon-dark {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-light {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+  display: inline-block;
 }
 
 .contact-link {

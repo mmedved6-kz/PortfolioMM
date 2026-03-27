@@ -51,11 +51,13 @@ export default function RootLayout({
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm">
             <a href={`mailto:${contact.email}`} className="contact-link" aria-label="Email">
-              <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
+              <Image src="/mailto.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon theme-icon-light" />
+              <Image src="/mailto-white.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon theme-icon-dark" />
               <span className="sr-only">Email</span>
             </a>
             <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link" aria-label="GitHub">
-              <Image src="/github-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon" />
+              <Image src="/github-svg.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon theme-icon-light" />
+              <Image src="/github-svg-white.svg" alt="" aria-hidden="true" width={24} height={24} className="contact-link-icon theme-icon-dark" />
               <span className="sr-only">GitHub</span>
             </a>
             <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link" aria-label="LinkedIn">

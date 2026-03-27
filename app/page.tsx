@@ -43,7 +43,7 @@ export default function Page() {
           </h1>
 
           <p className="mt-4 text-base md:text-lg text-muted max-w-2xl">
-            I care about clean UX, clean code and steady progress from idea to deployment.
+            Clean UX. Clean Code. Steady Progress - from idea to implementation.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
