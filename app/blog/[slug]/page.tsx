@@ -11,8 +11,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 export function generateStaticParams() {
   return [
-    { slug: "first-post" },
-    { slug: "second-post" },
+    { slug: "welcome" },
   ]
 }
 
