@@ -19,7 +19,7 @@ function Timeline({ items }: { items: TimelineItem[]}) {
                     <div className="mt-3 flex flex-wrap gap-2">
                         {item.skills.map((skill) => (
                             <span key={skill} 
-                                className="rounded-md border border-[var(--border)] px-2.5 py-1 text-xs bg-[color-mix(in_oklab, var(--surface), black_2%)]"
+                                className="rounded-md border border-[var(--border)] px-2.5 py-1 text-xs bg-[color-mix(in_oklab, var(--surface), white 70%)] text-[var(--accent)]"
                             >
                                 {skill}
                             </span>
