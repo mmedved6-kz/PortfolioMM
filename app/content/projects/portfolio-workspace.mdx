@@ -1,32 +1,3 @@
 ## The problem
 
 I wanted a portfolio that does more than list links: a place to show projects, write about what I learn, and let people reach me, all fast, accessible and easy to keep updated. It also had to be something I could keep improving without fighting my own code.
-
-## Approach
-
-The site is a **Next.js 16 App Router** app written in TypeScript and styled with **Tailwind CSS v4**, deployed on Vercel.
-
-- **Pages are server components by default.** Only the pieces that need the browser (theme toggle, carousel, contact form, cursor spotlight) ship JavaScript.
-- **Content lives next to the code.** Blog posts and case studies like this one are MDX files. Each post exports its own `metadata` (title, date, tag), and a small loader in `lib/blog.ts` turns the folder into a sorted list and static routes. Adding a post means adding a file.
-- **Design tokens drive everything.** Colors, radius and shadows are CSS variables, swapped by a `data-theme` attribute and exposed to Tailwind through `@theme inline`, so `text-accent` works in both light and dark mode.
-- **Live proof, not static numbers.** The home page pulls my latest commit and repo count from the GitHub API, cached and refreshed hourly, with a quiet fallback if GitHub is unavailable.
-
-## Key decisions
-
-**Fixing the theme flash.** The first version applied the saved theme in a React effect, so dark-mode visitors briefly saw the light theme on every load. A few lines of inline script in `<head>` now set the theme before the first paint.
-
-**Respecting the CSS cascade.** After moving to Tailwind v4, some utilities silently did nothing: the active nav link never changed color and a highlighted card never showed its border. The cause was my own global styles: unlayered CSS always beats Tailwind's layered utilities. Moving base and component styles into `@layer base` and `@layer components` fixed all of it at once.
-
-**Metadata in the content, not the file system.** Early on, post dates came from file modification times, which reset on every deploy. Each MDX file now declares its own date, so the order is stable and lives with the post.
-
-**Motion with an off switch.** The theme toggle reveals the new theme as an expanding circle (View Transitions API), and cards glow under the cursor. Both are disabled for visitors who prefer reduced motion.
-
-## Outcome
-
-- My first production deployment, live on Vercel.
-- A content workflow where publishing is one MDX file and a push.
-- A codebase I trimmed rather than grew: dead config, unused CMS stubs and duplicate styles were removed as features were added.
-
-## What I'd do next
-
-Write more case studies like this one for future projects, and keep the blog going with what I learn along the way.
