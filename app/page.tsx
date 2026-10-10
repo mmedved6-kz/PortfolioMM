@@ -72,7 +72,7 @@ export default async function Page() {
 
         <article className="surface card-hover p-5 md:p-6">
           <p className="text-sm uppercase tracking-[0.08em] text-muted">Public repos</p>
-          <p className="mt-2 text-4xl font-bold">{github?.publicRepos ?? "—"}</p>
+          <p className="mt-2 text-4xl font-bold">{github?.publicRepos ?? "â€”"}</p>
           <p className="mt-2 text-sm text-muted">
             {github ? `On GitHub since ${github.memberSince}.` : "Open-source work and experiments."}
           </p>
