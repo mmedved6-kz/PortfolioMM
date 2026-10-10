@@ -26,7 +26,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     <article className="surface p-6 md:p-10">
       <Link href="/projects" className="link-theme text-sm font-medium">&larr; All projects</Link>
       <header className="mt-4 border-b border-border pb-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">Case study</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-gold">Case study</p>
         <h1 className="mt-2 text-3xl font-bold md:text-4xl">{project.title}</h1>
         <p className="text-muted mt-3 max-w-2xl">{project.summary}</p>
         <div className="mt-4 flex flex-wrap items-center gap-2">

@@ -20,7 +20,7 @@ export default async function Page() {
       <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-surface to-accent/8">        
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-accent opacity-5 blur-3xl" />
         <div className="relative z-10">
-          <p className="text-xs md:text-sm uppercase tracking-[0.18em] text-muted">
+          <p className="text-xs md:text-sm uppercase tracking-[0.18em] text-gold">
             Medet Murzakhanov - Software Engineer
           </p>
 
@@ -56,7 +56,7 @@ export default async function Page() {
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-        <article className="surface card-hover p-5 md:p-6 md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_rgba(29,78,216,0.18)]">
+        <article className="surface card-hover p-5 md:p-6 md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_color-mix(in_oklab,var(--accent),transparent_82%)]">
           <p className="text-sm uppercase tracking-[0.08em] text-muted">Latest commit</p>
           {commit ? (
             <a href={commit.url} target="_blank" rel="noreferrer" className="group mt-2 block">

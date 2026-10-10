@@ -5,7 +5,7 @@ import { join } from "node:path";
 export const ogSize = { width: 1200, height: 630 };
 
 // Satori (next/og) has no access to CSS variables, so the dark theme palette is repeated here.
-const C = { bg: "#0B1220", surface: "#111827", text: "#E5E7EB", muted: "#94A3B8", border: "#1F2A3C", accent: "#60A5FA" };
+const C = { bg: "#06171D", text: "#E3F2F5", muted: "#8FB0BA", border: "#173A46", gold: "#FEC50C" };
 
 // Static TTFs (Satori can't read the woff2 that next/font serves). Read once per server instance.
 const fonts = Promise.all(
@@ -28,13 +28,13 @@ export async function renderOg({ eyebrow, title, subtitle }: { eyebrow: string; 
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: `radial-gradient(circle at 85% 0%, rgba(96,165,250,0.18), transparent 55%), ${C.bg}`,
+          background: `radial-gradient(circle at 85% 0%, rgba(0,175,202,0.2), transparent 55%), ${C.bg}`,
           color: C.text,
           fontFamily: "Outfit",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 28, letterSpacing: 4, textTransform: "uppercase", color: C.accent }}>{eyebrow}</div>
+          <div style={{ fontSize: 28, letterSpacing: 4, textTransform: "uppercase", color: C.gold }}>{eyebrow}</div>
           <div style={{ marginTop: 24, fontSize: title.length > 40 ? 64 : 80, fontWeight: 700, lineHeight: 1.1 }}>{title}</div>
           {subtitle ? <div style={{ marginTop: 28, fontSize: 32, color: C.muted, lineHeight: 1.4 }}>{subtitle}</div> : null}
         </div>

@@ -10,7 +10,7 @@ export default async function BlogPage() {
       <section className="surface relative overflow-hidden p-6 md:p-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,color-mix(in_oklab,var(--accent),transparent_86%),transparent_48%)]" />
         <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-gold">
             Journal
           </p>
           <h1 className="mt-2 text-3xl font-bold md:text-4xl">Blog</h1>
@@ -29,7 +29,7 @@ export default async function BlogPage() {
                   className="group grid gap-4 md:grid-cols-[1fr_auto] md:items-start"
                 >
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.09em] text-accent">
+                    <p className="text-xs font-semibold uppercase tracking-[0.09em] text-gold">
                       Featured Entry
                     </p>
                     <h2 className="mt-2 text-2xl font-semibold leading-tight transition-colors group-hover:text-accent md:text-3xl">
