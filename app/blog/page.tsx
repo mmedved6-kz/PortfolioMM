@@ -1,90 +1,12 @@
-import { readdirSync, readFileSync, statSync } from "fs";
 import Link from "next/link";
-import { join } from "path";
+import { formatDate, getPosts } from "@/lib/blog";
 
-type BlogListItem = {
-  slug: string;
-  title: string;
-  excerpt?: string;
-  publishedLabel?: string;
-  publishedAt?: number;
-  readingTimeMinutes?: number;
-  tag: string;
-}
-
-function slugToTitle(slug: string) {
-  return slug
-    .split("-")
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function inferTag(slug: string) {
-  const firstToken = slug.split("-").filter(Boolean)[0] ?? "notes";
-  return firstToken.charAt(0).toUpperCase() + firstToken.slice(1);
-}
-
-function extractText(mdxSource: string) {
-  return mdxSource
-    .replace(/^---[\s\S]*?---\s*/m, "")
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`[^`]+`/g, " ")
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
-    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
-    .replace(/[>#*_~\-|]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function buildExcerpt(text: string, maxLength: number = 148) {
-  if (text.length <= maxLength) {
-    return text;
-  }
-
-  return `${text.slice(0, maxLength).trimEnd()}...`;
-}
-
-function formatPublishedDate(date: Date) {
-  return new Intl.DateTimeFormat("en-UK", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }).format(date);
-}
-
-function getBlogPosts(): BlogListItem[] {
-  const contentDir = join(process.cwd(), "app", "content");
-
-  return readdirSync(contentDir)
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const slug = file.replace(/.mdx$/, "");
-      const filePath = join(contentDir, file);
-      const source = readFileSync(filePath, "utf-8");
-      const text = extractText(source);
-      const words = text.length === 0 ? 0 : text.split(" ").length;
-      const stats = statSync(filePath);
-
-      return {
-        slug,
-        title: slugToTitle(slug),
-        excerpt: buildExcerpt(text || "A short note from the my journal."),
-        publishedLabel: formatPublishedDate(stats.mtime),
-        publishedAt: stats.mtime.getTime(),
-        readingTimeMinutes: Math.max(1, Math.ceil(words / 220)),
-        tag: inferTag(slug),
-      };
-    })
-    .sort((a, b) => b.publishedAt - a.publishedAt);
-}
-
-export default function BlogPage() {
-  const blogPosts = getBlogPosts();
+export default async function BlogPage() {
+  const blogPosts = await getPosts();
   const [featuredPost, ...otherPosts] = blogPosts;
 
   return (
-    <main className="space-y-4">
+    <div className="space-y-4">
       <section className="surface relative overflow-hidden p-6 md:p-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,color-mix(in_oklab,var(--accent),transparent_86%),transparent_48%)]" />
         <div className="relative">
@@ -101,10 +23,71 @@ export default function BlogPage() {
           <p className="p-6 md:p-8 text-muted">No posts yet.</p>
         ) : (
           <>
-            
+            {featuredPost ? (
+              <article className="border-b border-[var(--border)] p-6 md:p-8">
+                <Link href={`/blog/${featuredPost.slug}`} 
+                  className="group grid gap-4 md:grid-cols-[1fr_auto] md:items-start"
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.09em] text-[var(--accent)]">
+                      Featured Entry
+                    </p>
+                    <h2 className="mt-2 text-2xl font-semibold leading-tight transition-colors group-hover:text-[var(--accent)] md:text-3xl">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="text-muted mt-3 max-w-2xl text-base md:text-lg">
+                      {featuredPost.description}
+                    </p>
+                    <p className="text-muted mt-4 text-sm">
+                      {formatDate(featuredPost.date)} &middot; {featuredPost.readingTimeMinutes} min read
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
+                    <span className="rounded-full border border-[var(--accent)] bg-[color-mix(in_oklab,var(--surface),var(--accent)_8%)] px-3 py-1 text-xs font-medium text-[var(--accent)]">
+                      {featuredPost.tag}
+                    </span>
+                    <span className="text-sm font-medium text-[var(--accent)] transition-transform group-hover:translate-x-1">
+                      Read more &rarr;
+                    </span>
+                  </div>
+                </Link>
+              </article>
+            ): null}
+
+            <div className="divide-y divide-[var(--border)]">
+              {otherPosts.map((post, index) => (
+                <article key={post.slug} className="section-animate" style={{ animationDelay: `${index * 60}ms` }}>
+                  <Link href={`/blog/${post.slug}`} className="group relative grid gap-4 px-6 py-5 md:grid-cols-[170px_1fr_auto] md:items-center md:px-8 md:py-6">
+                    <span className="pointer-events-none absolute inset-y-2 left-2 w-0.5 bg-[var(--accent)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
+                    <div className="text-muted text-sm">
+                      <p>{formatDate(post.date)}</p>
+                      <p>{post.readingTimeMinutes} min read</p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-semibold transition-colors group-hover:text-[var(--accent)]">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted mt-2 text-sm md:text-base">{post.description}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-3 md:justify-end">
+                      <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-muted transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
+                        {post.tag}
+                      </span>
+                      <span className="text-sm font-medium text-[var(--accent)] transition-transform group-hover:translate-x-1">
+                        Read more &rarr;
+                      </span>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
           </>
         )}
       </section>
-    </main>
+    </div>
   );
 }

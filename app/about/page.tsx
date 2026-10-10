@@ -65,7 +65,7 @@ export default function About() {
     }, [sectionIds]);
 
     return (
-        <main className="grid grid-cols-1 lg:grid-cols-[200px_minmax(0,1fr)] gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[200px_minmax(0,1fr)] gap-8">
             <aside className="h-fit lg:sticky lg:self-start pr-4 border-l-2 border-[var(--border)] pl-4"
                 style={{ top: "calc(var(--floating-nav-offset) + var(--floating-nav-height) + 1rem)"}}>
                 <h3 className="text-xs uppercase tracking-[0.14em] text-muted font-semibold">On this page</h3>
@@ -128,6 +128,6 @@ export default function About() {
                     <Timeline items={EDUCATION} />
                 </section>
             </article>
-        </main>
+        </div>
     );    
 }

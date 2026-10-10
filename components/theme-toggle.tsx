@@ -1,15 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
 
 type Theme = "light" | "dark";
-
-function getPreferredTheme(): Theme {
-  const saved = localStorage.getItem("theme");
-  if (saved === "light" || saved === "dark") return saved;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
 
 function applyTheme(theme: Theme) {
   document.documentElement.setAttribute("data-theme", theme);
@@ -17,10 +10,6 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ThemeToggle() {
-  useEffect(() => {
-    applyTheme(getPreferredTheme());
-  }, []);
-
   function toggleTheme() {
     const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     applyTheme(current === "light" ? "dark" : "light");

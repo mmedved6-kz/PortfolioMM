@@ -62,7 +62,7 @@ export function ContactForm() {
 
             <div>
                 <label htmlFor="message" className="contact-input-label">Message</label>
-                <textarea id="message" name="message" required minLength={10} maxLength={500} rows={6} className="contact-textarea" placeholder="Tell me about your idea..." />
+                <textarea id="message" name="message" required minLength={10} maxLength={5000} rows={6} className="contact-textarea" placeholder="Tell me about your idea..." />
             </div>
 
             <button type="submit" className="button-primary" disabled={state.status === "sending"}>

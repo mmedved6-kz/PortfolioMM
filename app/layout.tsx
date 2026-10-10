@@ -17,6 +17,8 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const themeScript = `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
+
 export const metadata: Metadata = {
   title: "Portfolio - Medet Murzakhanov",
   description: "A personal portfolio website showcasing the projects, experience, and skills of Medet Murzakhanov.",
@@ -34,7 +36,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.className} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Set theme before first paint to avoid a light flash for dark-mode users. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col text-theme">
         <header className="floating-nav-wrap z-20">
             <NavBar />
@@ -46,7 +53,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="footer-shell bg-gray-100 mt-12 py-6 text-center text-muted">
+        <footer className="footer-shell mt-12 py-6 text-center text-muted">
           <p>&copy; {new Date().getFullYear()} Medet Murzakhanov. All rights reserved.</p>
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm">

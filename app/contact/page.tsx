@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 
 export default function ContactPage() {
     return (
-        <main className="space-y-4">
+        <div className="space-y-4">
             <section className="surface p-8 md:p-12 text-center">
                 <h1 className="text-6xl md:text-8xl font-black tracking-widest uppercase">Contact</h1>
                 <p className="text-muted mt-4 max-w-2xl mx-auto">
@@ -62,6 +62,6 @@ export default function ContactPage() {
                     </ul>
                 </article>
             </section>
-        </main>
+        </div>
     );
 }

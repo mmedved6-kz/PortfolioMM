@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ProjectsPage() {
   return (
-    <main className="space-y-4">
+    <div className="space-y-4">
       <section className="surface p-6 md:p-8">
         <h1 className="text-3xl font-bold">Projects</h1>
         <p className="text-muted mt-2">Selected work with outcomes and architecture notes.</p>
@@ -22,7 +22,8 @@ export default function ProjectsPage() {
                   rel="noopener noreferrer"
                   className="text-muted hover:text-foreground transition-colors"
                   aria-label={`View ${project.title} repository`}>
-                    <Image src="/github-svg.svg" alt="GitHub" width={20} height={20} className="inline-block ml-2" />
+                    <Image src="/github-svg.svg" alt="" aria-hidden="true" width={20} height={20} className="ml-2 theme-icon-light" />
+                    <Image src="/github-svg-white.svg" alt="" aria-hidden="true" width={20} height={20} className="ml-2 theme-icon-dark" />
                   </a>
               )}
             </div>
@@ -40,6 +41,6 @@ export default function ProjectsPage() {
           </article>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

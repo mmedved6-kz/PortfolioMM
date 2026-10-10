@@ -30,7 +30,7 @@ const proofCards = [
 
 export default function Page() {
   return (
-    <main className="space-y-6">
+    <div className="space-y-6">
       <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-[var(--surface)] to-[rgba(29,78,216,0.08)]">        
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-[var(--accent)] opacity-5 blur-3xl" />
         <div className="relative z-10">
@@ -136,6 +136,6 @@ export default function Page() {
           <Link href="/blog" className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme">Explore Blog</Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
