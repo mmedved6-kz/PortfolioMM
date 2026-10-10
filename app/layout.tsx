@@ -21,6 +21,7 @@ const geistMono = Geist_Mono({
 const themeScript = `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-medmur.vercel.app"),
   title: "Portfolio - Medet Murzakhanov",
   description: "A personal portfolio website showcasing the projects, experience, and skills of Medet Murzakhanov.",
   icons: {
