@@ -3,6 +3,7 @@
 import type { ProjectItem } from "@/lib/projects";
 import AutoScroll from "embla-carousel-auto-scroll";
 import useEmblaCarousel from "embla-carousel-react";
+import Link from "next/link";
 
 type ProjectRailProps = {
     projects: ProjectItem[];
@@ -50,6 +51,11 @@ export default function ProjectRail ({ projects }: ProjectRailProps) {
                                         </li>
                                     ))}
                                 </ul>
+                                {project.caseStudy && (
+                                    <Link href={`/projects/${project.slug}`} className="mt-4 inline-block link-theme text-sm font-medium">
+                                        Read case study &rarr;
+                                    </Link>
+                                )}
                             </article>
                         </div>
                     ))}

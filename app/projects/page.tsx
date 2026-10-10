@@ -1,5 +1,6 @@
 import { PROJECTS } from "@/lib/projects";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function ProjectsPage() {
@@ -20,7 +21,7 @@ export default function ProjectsPage() {
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-foreground transition-colors"
+                  className="text-muted hover:text-fg transition-colors"
                   aria-label={`View ${project.title} repository`}>
                     <Image src="/github-svg.svg" alt="" aria-hidden="true" width={20} height={20} className="ml-2 theme-icon-light" />
                     <Image src="/github-svg-white.svg" alt="" aria-hidden="true" width={20} height={20} className="ml-2 theme-icon-dark" />
@@ -38,6 +39,11 @@ export default function ProjectsPage() {
                 </li>
               ))}
             </ul>
+            {project.caseStudy && (
+              <Link href={`/projects/${project.slug}`} className="mt-4 inline-block link-theme text-sm font-medium">
+                Read case study &rarr;
+              </Link>
+            )}
           </article>
         ))}
       </section>

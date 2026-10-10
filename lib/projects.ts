@@ -6,6 +6,7 @@ export type ProjectItem = {
     stack: string[];
     featured?: boolean;
     repoUrl?: string;
+    caseStudy?: boolean; // true = app/content/projects/<slug>.mdx exists, served at /projects/<slug>
 };
 
 export const PROJECTS: ProjectItem[] = [
@@ -17,5 +18,6 @@ export const PROJECTS: ProjectItem[] = [
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     featured: true,
     repoUrl: "https://github.com/mmedved6-kz/PortfolioMM",
+    caseStudy: true,
   },
 ]
