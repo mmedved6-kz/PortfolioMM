@@ -412,6 +412,13 @@ body {
   }
 }
 
+/* Theme toggle reveal (see theme-toggle.tsx): replace the default cross-fade with a clip-path circle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Unlayered on purpose: the typography plugin sets these in the utilities layer. Points them at theme tokens so posts follow light/dark. */
 .prose {
   --tw-prose-body: var(--text);
