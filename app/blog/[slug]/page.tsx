@@ -21,12 +21,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <article className="surface p-6 md:p-10">
       <Link href="/blog" className="link-theme text-sm font-medium">&larr; All posts</Link>
-      <header className="mt-4 border-b border-[var(--border)] pb-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">{metadata.tag}</p>
+      <header className="mt-4 border-b border-border pb-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">{metadata.tag}</p>
         <h1 className="mt-2 text-3xl font-bold md:text-4xl">{metadata.title}</h1>
         <p className="text-muted mt-3 text-sm">{formatDate(metadata.date)}</p>
       </header>
-      <div className="mt-6">
+      <div className="prose mt-6">
         <Post />
       </div>
     </article>

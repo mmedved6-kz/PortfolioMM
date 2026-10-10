@@ -33,7 +33,7 @@ export default function ProjectsPage() {
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {project.stack.map((item) => (
-                <li key={item} className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-muted">
+                <li key={item} className="chip">
                   {item}
                 </li>
               ))}

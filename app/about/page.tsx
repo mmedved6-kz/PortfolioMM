@@ -6,11 +6,11 @@ import { useEffect, useMemo, useState } from "react";
 
 function Timeline({ items }: { items: TimelineItem[]}) {
     return (
-        <div className="mt-5 relative border-l border-[var(--border)] pl-5 space-y-5">
+        <div className="mt-5 relative border-l border-border pl-5 space-y-5">
             {items.map((item, idx) => (
                 <article key={`${item.title}-${item.organisation}-${idx}`}
-                className="relative rounded-xl border border-[var(--border)] p-4">
-                    <span className="absolute -left-[1.62rem] top-5 h-3 w-3 rounded-full bg-[var(--accent)]" />
+                className="relative rounded-xl border border-border p-4">
+                    <span className="absolute -left-[1.62rem] top-5 h-3 w-3 rounded-full bg-accent" />
                     <p className="text-sm text-muted">{item.date}</p>
                     <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
                     <p className="mt-1 text-sm text-muted">{item.organisation}</p>
@@ -19,7 +19,7 @@ function Timeline({ items }: { items: TimelineItem[]}) {
                     <div className="mt-3 flex flex-wrap gap-2">
                         {item.skills.map((skill) => (
                             <span key={skill} 
-                                className="rounded-md border border-[var(--border)] px-2.5 py-1 text-xs bg-[color-mix(in_oklab, var(--surface), white 70%)] text-[var(--accent)]"
+                                className="rounded-md border border-border px-2.5 py-1 text-xs bg-accent/5 text-accent"
                             >
                                 {skill}
                             </span>
@@ -66,7 +66,7 @@ export default function About() {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-[200px_minmax(0,1fr)] gap-8">
-            <aside className="h-fit lg:sticky lg:self-start pr-4 border-l-2 border-[var(--border)] pl-4"
+            <aside className="h-fit lg:sticky lg:self-start pr-4 border-l-2 border-border pl-4"
                 style={{ top: "calc(var(--floating-nav-offset) + var(--floating-nav-height) + 1rem)"}}>
                 <h3 className="text-xs uppercase tracking-[0.14em] text-muted font-semibold">On this page</h3>
                 <nav className="mt-3 space-y-1">
@@ -79,7 +79,7 @@ export default function About() {
                                 className={[
                                     "block rounded-md px-3 py-2 text-sm transition-colors",
                                     isActive
-                                        ? "text-[var(--accent)] font-semibold bg-[color-mix(in_oklab,var(--accent),transparent_90%)]"
+                                        ? "text-accent font-semibold bg-accent/10"
                                         : "text-muted hover:text-theme",
                                 ].join(" ")}
                             >
@@ -103,7 +103,7 @@ export default function About() {
                             ))}
                         </div>
 
-                        <div className="rounedd-xl border border-[var(--border)] p-3">
+                        <div className="rounedd-xl border border-border p-3">
                             <div className="relative h-56 w-full overflow-hidden rounded-lg">
                                 <Image 
                                     src="/profile.png"

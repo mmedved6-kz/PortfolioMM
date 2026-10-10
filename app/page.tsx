@@ -31,8 +31,8 @@ const proofCards = [
 export default function Page() {
   return (
     <div className="space-y-6">
-      <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-[var(--surface)] to-[rgba(29,78,216,0.08)]">        
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-[var(--accent)] opacity-5 blur-3xl" />
+      <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-surface to-accent/8">        
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-accent opacity-5 blur-3xl" />
         <div className="relative z-10">
           <p className="text-xs md:text-sm uppercase tracking-[0.18em] text-muted">
             Medet Murzakhanov - Software Engineer
@@ -53,14 +53,14 @@ export default function Page() {
 
             <Link
               href="/about"
-              className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
+              className="button-secondary"
             >
               About Me
             </Link>
 
             <Link
               href="/blog"
-              className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme"
+              className="button-secondary"
             >
               Read Blog
             </Link>
@@ -76,12 +76,12 @@ export default function Page() {
             className={[
               "surface p-5 md:p-6 transition-all duration-200 relative", 
               card.emphasis 
-                ? "md:-translate-y-1 border-2 border-[var(--accent)] shadow-[0_10px_30px_rgba(29,78,216,0.18)]"
+                ? "md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_rgba(29,78,216,0.18)]"
                 : "opacity-95 hover:opacity-100",
             ].join(" ")}
           >
             <p className="text-sm uppercase tracking-[0.08em] text-muted">{card.title}</p>
-            <p className={card.emphasis ? "mt-2 text-5xl font-bold text-[var(--accent)]" : "mt-2 text-4xl font-bold"}>{card.value}</p>
+            <p className={card.emphasis ? "mt-2 text-5xl font-bold text-accent" : "mt-2 text-4xl font-bold"}>{card.value}</p>
             <p className="mt-2 text-sm text-muted">{card.note}</p>
           </article>
         ))}
@@ -133,7 +133,7 @@ export default function Page() {
         <p className="mt-3 text-muted">If you have a role, product idea, or challenge, let&apos;s talk</p>
         <div className="mt-6 flex justify-center gap-3 flex-wrap">
           <Link href="/contact" className="button-primary inline-block">Contact Me</Link>
-          <Link href="/blog" className="inline-block rounded-lg border border-[var(--border)] px-4 py-3 text-sm font-medium link-theme">Explore Blog</Link>
+          <Link href="/blog" className="button-secondary">Explore Blog</Link>
         </div>
       </section>
     </div>

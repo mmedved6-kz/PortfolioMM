@@ -28,7 +28,7 @@ export default function NavBar() {
                     className={[
                         "text-xs sm:text-sm font-medium transition-colors duration-200",
                         isActive(link.href)
-                            ? "text-[var(--accent)] font-semibold"
+                            ? "text-accent font-semibold"
                             : "link-theme hover:underline",
                     ].join(" ")}
                 >

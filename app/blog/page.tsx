@@ -10,7 +10,7 @@ export default async function BlogPage() {
       <section className="surface relative overflow-hidden p-6 md:p-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,color-mix(in_oklab,var(--accent),transparent_86%),transparent_48%)]" />
         <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
             Journal
           </p>
           <h1 className="mt-2 text-3xl font-bold md:text-4xl">Blog</h1>
@@ -24,15 +24,15 @@ export default async function BlogPage() {
         ) : (
           <>
             {featuredPost ? (
-              <article className="border-b border-[var(--border)] p-6 md:p-8">
+              <article className="border-b border-border p-6 md:p-8">
                 <Link href={`/blog/${featuredPost.slug}`} 
                   className="group grid gap-4 md:grid-cols-[1fr_auto] md:items-start"
                 >
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.09em] text-[var(--accent)]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.09em] text-accent">
                       Featured Entry
                     </p>
-                    <h2 className="mt-2 text-2xl font-semibold leading-tight transition-colors group-hover:text-[var(--accent)] md:text-3xl">
+                    <h2 className="mt-2 text-2xl font-semibold leading-tight transition-colors group-hover:text-accent md:text-3xl">
                       {featuredPost.title}
                     </h2>
                     <p className="text-muted mt-3 max-w-2xl text-base md:text-lg">
@@ -44,10 +44,10 @@ export default async function BlogPage() {
                   </div>
 
                   <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
-                    <span className="rounded-full border border-[var(--accent)] bg-[color-mix(in_oklab,var(--surface),var(--accent)_8%)] px-3 py-1 text-xs font-medium text-[var(--accent)]">
+                    <span className="chip chip-accent">
                       {featuredPost.tag}
                     </span>
-                    <span className="text-sm font-medium text-[var(--accent)] transition-transform group-hover:translate-x-1">
+                    <span className="text-sm font-medium text-accent transition-transform group-hover:translate-x-1">
                       Read more &rarr;
                     </span>
                   </div>
@@ -55,11 +55,11 @@ export default async function BlogPage() {
               </article>
             ): null}
 
-            <div className="divide-y divide-[var(--border)]">
+            <div className="divide-y divide-border">
               {otherPosts.map((post, index) => (
                 <article key={post.slug} className="section-animate" style={{ animationDelay: `${index * 60}ms` }}>
                   <Link href={`/blog/${post.slug}`} className="group relative grid gap-4 px-6 py-5 md:grid-cols-[170px_1fr_auto] md:items-center md:px-8 md:py-6">
-                    <span className="pointer-events-none absolute inset-y-2 left-2 w-0.5 bg-[var(--accent)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                    <span className="pointer-events-none absolute inset-y-2 left-2 w-0.5 bg-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
                     <div className="text-muted text-sm">
                       <p>{formatDate(post.date)}</p>
@@ -67,17 +67,17 @@ export default async function BlogPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold transition-colors group-hover:text-[var(--accent)]">
+                      <h3 className="text-xl font-semibold transition-colors group-hover:text-accent">
                         {post.title}
                       </h3>
                       <p className="text-muted mt-2 text-sm md:text-base">{post.description}</p>
                     </div>
 
                     <div className="flex items-center justify-between gap-3 md:justify-end">
-                      <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-muted transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
+                      <span className="chip group-hover:border-accent group-hover:text-accent">
                         {post.tag}
                       </span>
-                      <span className="text-sm font-medium text-[var(--accent)] transition-transform group-hover:translate-x-1">
+                      <span className="text-sm font-medium text-accent transition-transform group-hover:translate-x-1">
                         Read more &rarr;
                       </span>
                     </div>

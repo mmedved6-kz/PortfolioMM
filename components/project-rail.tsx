@@ -19,7 +19,8 @@ export default function ProjectRail ({ projects }: ProjectRailProps) {
         },
         [
             AutoScroll({
-                playOnInit: true,
+                // Also rendered on the server (no window); Embla only reads this in the browser.
+                playOnInit: typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
                 speed: 0.8,
                 stopOnMouseEnter: true,
                 stopOnInteraction: false,
@@ -36,7 +37,7 @@ export default function ProjectRail ({ projects }: ProjectRailProps) {
                 <div className="embla__container">
                     {projects.map((project, idx) => (
                         <div key={`${project.slug}-${idx}`} className="embla__slide">
-                            <article className="rounded-xl border border-[var(--border)] p-4 min-w-[280px] max-w-[320px] bg-[var(--surface)]">
+                            <article className="rounded-xl border border-border p-4 min-w-[280px] max-w-[320px] bg-surface">
                                 <h3 className="text-lg font-semibold">{project.title}</h3>
                                 <p className="mt-2 text-sm">{project.summary}</p>
                                 <p className="mt-2 text-sm text-muted">
@@ -44,7 +45,7 @@ export default function ProjectRail ({ projects }: ProjectRailProps) {
                                 </p>
                                 <ul className="mt-3 flex flex-wrap gap-2">
                                     {project.stack.map((item) => (
-                                        <li key={item} className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-muted">
+                                        <li key={item} className="chip">
                                             {item}
                                         </li>
                                     ))}
