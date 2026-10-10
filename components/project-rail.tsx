@@ -37,7 +37,7 @@ export default function ProjectRail ({ projects }: ProjectRailProps) {
                 <div className="embla__container">
                     {projects.map((project, idx) => (
                         <div key={`${project.slug}-${idx}`} className="embla__slide">
-                            <article className="rounded-xl border border-border p-4 min-w-[280px] max-w-[320px] bg-surface">
+                            <article className="rounded-xl border border-border p-4 transition-colors hover:border-accent min-w-[280px] max-w-[320px] bg-surface">
                                 <h3 className="text-lg font-semibold">{project.title}</h3>
                                 <p className="mt-2 text-sm">{project.summary}</p>
                                 <p className="mt-2 text-sm text-muted">

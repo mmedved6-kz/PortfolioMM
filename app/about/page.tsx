@@ -9,7 +9,7 @@ function Timeline({ items }: { items: TimelineItem[]}) {
         <div className="mt-5 relative border-l border-border pl-5 space-y-5">
             {items.map((item, idx) => (
                 <article key={`${item.title}-${item.organisation}-${idx}`}
-                className="relative rounded-xl border border-border p-4">
+                className="card-hover relative rounded-xl border border-border p-4">
                     <span className="absolute -left-[1.62rem] top-5 h-3 w-3 rounded-full bg-accent" />
                     <p className="text-sm text-muted">{item.date}</p>
                     <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
@@ -103,7 +103,7 @@ export default function About() {
                             ))}
                         </div>
 
-                        <div className="rounedd-xl border border-border p-3">
+                        <div className="rounded-xl border border-border p-3">
                             <div className="relative h-56 w-full overflow-hidden rounded-lg">
                                 <Image 
                                     src="/profile.png"

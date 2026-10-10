@@ -20,16 +20,17 @@ export default function NavBar() {
     };
 
     return (
-        <nav className="floating-nav flex items-center gap-3 px-3 py-2 md:gap-5 md:px-4 md:py-3 max-w-full overflow-x-auto whitespace-nowrap">
+        <nav className="floating-nav flex items-center gap-1 px-2 py-1.5 md:gap-2 md:px-3 md:py-2 max-w-full overflow-x-auto whitespace-nowrap">
             {links.map((link) => (
                 <Link
                     key={link.href}
                     href={link.href}
+                    aria-current={isActive(link.href) ? "page" : undefined}
                     className={[
-                        "text-xs sm:text-sm font-medium transition-colors duration-200",
+                        "rounded-full px-2.5 py-1 text-xs sm:px-3 sm:text-sm font-medium transition-colors duration-200",
                         isActive(link.href)
-                            ? "text-accent font-semibold"
-                            : "link-theme hover:underline",
+                            ? "bg-accent/10 text-accent"
+                            : "text-muted hover:text-fg",
                     ].join(" ")}
                 >
                     {link.label}

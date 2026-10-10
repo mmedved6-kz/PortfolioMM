@@ -77,6 +77,16 @@ body {
     box-shadow: var(--shadow-sm);
   }
 
+  .card-hover {
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--accent), var(--border) 50%);
+    box-shadow: var(--shadow-md);
+  }
+
   .text-theme {
     color: var(--text);
   }
@@ -184,6 +194,10 @@ body {
 
     .section-animate {
       animation: none;
+    }
+
+    .card-hover:hover {
+      transform: none;
     }
   }
 

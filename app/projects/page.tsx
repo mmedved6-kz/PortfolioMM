@@ -12,7 +12,7 @@ export default function ProjectsPage() {
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {PROJECTS.map((project) => (
-          <article key={project.slug} className="surface p-5">
+          <article key={project.slug} className="surface card-hover p-5">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold">{project.title}</h2>
               {project.repoUrl && (

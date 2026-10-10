@@ -1,6 +1,7 @@
 import ProjectRail from "@/components/project-rail";
 import { PROJECTS } from "@/lib/projects";
 import Link from "next/link";
+import { formatDate, getPosts } from "@/lib/blog";
 
 const featuredProjects = PROJECTS.filter((p) => p.featured);
 
@@ -28,7 +29,9 @@ const proofCards = [
   }
 ]
 
-export default function Page() {
+export default async function Page() {
+  const latestPosts = (await getPosts()).slice(0, 2);
+
   return (
     <div className="space-y-6">
       <section className="surface p-6 md:p-10 relative overflow-hidden bg-gradient-to-br from-surface to-accent/8">        
@@ -38,7 +41,7 @@ export default function Page() {
             Medet Murzakhanov - Software Engineer
           </p>
 
-          <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
+          <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight max-w-3xl">
             I build practical full-stack products while growing as a software engineer.
           </h1>
 
@@ -74,10 +77,10 @@ export default function Page() {
           <article 
             key={card.id} 
             className={[
-              "surface p-5 md:p-6 transition-all duration-200 relative", 
+              "surface card-hover p-5 md:p-6 relative", 
               card.emphasis 
                 ? "md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_rgba(29,78,216,0.18)]"
-                : "opacity-95 hover:opacity-100",
+                : "",
             ].join(" ")}
           >
             <p className="text-sm uppercase tracking-[0.08em] text-muted">{card.title}</p>
@@ -119,9 +122,20 @@ export default function Page() {
 
         <article className="surface p-6 md:p-8 lg:col-span-2">
           <h2 className="text-2xl font-semibold">Latest Writing</h2>
-          <p className="mt-4 text-sm text-muted leading-6">
-            This section is being prepared for upcoming blog posts. New writing will appear here soon.
-          </p>
+          {latestPosts.length === 0 ? (
+            <p className="mt-4 text-sm text-muted leading-6">New writing will appear here soon.</p>
+          ) : (
+            <ul className="mt-4 divide-y divide-border">
+              {latestPosts.map((post) => (
+                <li key={post.slug}>
+                  <Link href={`/blog/${post.slug}`} className="group block py-3">
+                    <p className="font-medium transition-colors group-hover:text-accent">{post.title}</p>
+                    <p className="mt-1 text-sm text-muted">{formatDate(post.date)} &middot; {post.readingTimeMinutes} min read</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
           <Link href="/blog" className="mt-4 inline-block link-theme text-sm font-medium">
             Visit Blog
           </Link>
