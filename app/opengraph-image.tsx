@@ -4,7 +4,7 @@ export const alt = "Medet Murzakhanov - Software Engineer";
 export const size = ogSize;
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function Image() {
   return renderOg({
     eyebrow: "Software Engineer",
     title: "I build practical full-stack products.",

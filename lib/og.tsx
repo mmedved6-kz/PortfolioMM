@@ -1,11 +1,23 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const ogSize = { width: 1200, height: 630 };
 
 // Satori (next/og) has no access to CSS variables, so the dark theme palette is repeated here.
 const C = { bg: "#0B1220", surface: "#111827", text: "#E5E7EB", muted: "#94A3B8", border: "#1F2A3C", accent: "#60A5FA" };
 
-export function renderOg({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
+// Static TTFs (Satori can't read the woff2 that next/font serves). Read once per server instance.
+const fonts = Promise.all(
+  ([["Regular", 400], ["Bold", 700]] as const).map(async ([style, weight]) => ({
+    name: "Outfit",
+    data: await readFile(join(process.cwd(), "assets", "fonts", `Outfit-${style}.ttf`)),
+    weight,
+    style: "normal" as const,
+  })),
+);
+
+export async function renderOg({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return new ImageResponse(
     (
       <div
@@ -18,7 +30,7 @@ export function renderOg({ eyebrow, title, subtitle }: { eyebrow: string; title:
           padding: 72,
           background: `radial-gradient(circle at 85% 0%, rgba(96,165,250,0.18), transparent 55%), ${C.bg}`,
           color: C.text,
-          fontFamily: "sans-serif",
+          fontFamily: "Outfit",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -32,6 +44,6 @@ export function renderOg({ eyebrow, title, subtitle }: { eyebrow: string; title:
         </div>
       </div>
     ),
-    ogSize,
+    { ...ogSize, fonts: await fonts },
   );
 }
