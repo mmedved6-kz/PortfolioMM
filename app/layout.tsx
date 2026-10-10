@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
+import Spotlight from "@/components/spotlight";
 import { contact } from "@/lib/contact";
 import Image from "next/image";
 import { Analytics } from "@vercel/analytics/next";
@@ -74,6 +75,7 @@ export default function RootLayout({
           </div>
         </footer>
 
+        <Spotlight />
         <Analytics />
       </body>
     </html>
