@@ -2,35 +2,18 @@ import ProjectRail from "@/components/project-rail";
 import { PROJECTS } from "@/lib/projects";
 import Link from "next/link";
 import { formatDate, getPosts } from "@/lib/blog";
+import { contact } from "@/lib/contact";
+import { getGithubActivity, timeAgo } from "@/lib/github";
 
 const featuredProjects = PROJECTS.filter((p) => p.featured);
 
-const proofCards = [
-  {
-    id: "experience",
-    title: "Years of Experience",
-    value: "1+",
-    note: "Internship and hands-on team collaboration in real product workflows.",
-    emphasis: false,
-  },
-  {
-    id: "projects",
-    title: "Projects Deployed",
-    value: "1",
-    note: "Full-stack projects with measurable outcomes.",
-    emphasis: true,
-  },
-  {
-    id: "fun",
-    title: "Cups of Coffee",
-    value: "58",
-    note: "Regular companion for debugging, learning and building.",
-    emphasis: false,
-  }
-]
+// Full class names so Tailwind can see them; index = GitHub contribution level 0-4.
+const HEAT = ["bg-border", "bg-accent/25", "bg-accent/50", "bg-accent/75", "bg-accent"];
 
 export default async function Page() {
-  const latestPosts = (await getPosts()).slice(0, 2);
+  const [posts, github] = await Promise.all([getPosts(), getGithubActivity()]);
+  const latestPosts = posts.slice(0, 2);
+  const commit = github?.latestCommit;
 
   return (
     <div className="space-y-6">
@@ -73,21 +56,49 @@ export default async function Page() {
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-        {proofCards.map((card) => (
-          <article 
-            key={card.id} 
-            className={[
-              "surface card-hover p-5 md:p-6 relative", 
-              card.emphasis 
-                ? "md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_rgba(29,78,216,0.18)]"
-                : "",
-            ].join(" ")}
-          >
-            <p className="text-sm uppercase tracking-[0.08em] text-muted">{card.title}</p>
-            <p className={card.emphasis ? "mt-2 text-5xl font-bold text-accent" : "mt-2 text-4xl font-bold"}>{card.value}</p>
-            <p className="mt-2 text-sm text-muted">{card.note}</p>
+        <article className="surface card-hover p-5 md:p-6 md:-translate-y-1 border-2 border-accent shadow-[0_10px_30px_rgba(29,78,216,0.18)]">
+          <p className="text-sm uppercase tracking-[0.08em] text-muted">Latest commit</p>
+          {commit ? (
+            <a href={commit.url} target="_blank" rel="noreferrer" className="group mt-2 block">
+              <p className="font-mono text-lg font-semibold leading-snug text-accent line-clamp-2 group-hover:underline">{commit.message}</p>
+              <p className="mt-2 text-sm text-muted">{commit.repo} &middot; {timeAgo(commit.date)}</p>
+            </a>
+          ) : (
+            <a href={contact.github} target="_blank" rel="noreferrer" className="mt-2 block text-lg font-semibold text-accent hover:underline">
+              See what I&apos;m building on GitHub &rarr;
+            </a>
+          )}
+        </article>
+
+        <article className="surface card-hover p-5 md:p-6">
+          <p className="text-sm uppercase tracking-[0.08em] text-muted">Public repos</p>
+          <p className="mt-2 text-4xl font-bold">{github?.publicRepos ?? "—"}</p>
+          <p className="mt-2 text-sm text-muted">
+            {github ? `On GitHub since ${github.memberSince}.` : "Open-source work and experiments."}
+          </p>
+        </article>
+
+        {github?.contributions ? (
+          <article className="surface card-hover p-5 md:p-6">
+            <p className="text-sm uppercase tracking-[0.08em] text-muted">Contributions</p>
+            <div className="mt-3 flex gap-[3px]" role="img" aria-label={`${github.contributions.total} contributions in the last year`}>
+              {github.contributions.weeks.map((week, i) => (
+                <div key={i} className="flex flex-col gap-[3px]">
+                  {week.map((level, j) => (
+                    <span key={j} className={`h-2.5 w-2.5 rounded-[2px] ${HEAT[level]}`} />
+                  ))}
+                </div>
+              ))}
+            </div>
+            <p className="mt-2 text-sm text-muted">{github.contributions.total} in the last year.</p>
           </article>
-        ))}
+        ) : (
+          <article className="surface card-hover p-5 md:p-6">
+            <p className="text-sm uppercase tracking-[0.08em] text-muted">Years of Experience</p>
+            <p className="mt-2 text-4xl font-bold">1+</p>
+            <p className="mt-2 text-sm text-muted">Internship and hands-on team collaboration in real product workflows.</p>
+          </article>
+        )}
       </section>
 
       <section className="surface p-6 md:p-8">
